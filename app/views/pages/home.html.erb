@@ -15,7 +15,7 @@
 	<% if patient_signed_in? %>
 	<h1>Welcome <%=current_patient.firstname %> </h1>
 	<h1>Make new Appointment</h1>
-	<button class="btn btn-primary">Make</button>
+	<%= link_to 'New Appointment', doctors_list_path ,class:"btn btn-primary"%>
 	<%= link_to "Log out", destroy_patient_session_path, method: :delete, class:'btn btn-primary'%>
 	<% else %>
 	<h1>Sign up or Log in to make new appointment</h1>

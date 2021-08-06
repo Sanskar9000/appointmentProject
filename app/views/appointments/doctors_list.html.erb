@@ -1,0 +1,21 @@
+<h1>Doctors list</h1>
+<hr>
+
+<% if !@doctors.blank? %>
+	  <% for item in @doctors %>
+	    	<h3>Dr.<%= item.firstname %> <%=item.lastname %></h3>
+	    	<h3>Email: <%= item.email %></h3>
+	    	<%= form_with scope: @appointment,url: new_appointment_path, method: :get,local: true do |form| %>
+		  <div class="field">
+		    <%= form.text_field :id ,value:item.id, type:"hidden"%>
+		  </div>
+		  <div class="actions">
+		    <%= form.submit value:"make",class:"btn btn-info" %>
+		  	<%= link_to 'Back', root_path ,class:"btn btn-info"  %>
+		  </div>
+	<% end %>
+    <hr>
+  <% end %>
+<% else %>
+  
+<% end %>

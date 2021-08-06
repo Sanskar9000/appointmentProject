@@ -22,3 +22,15 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Some setup you must do manually if you haven't yet:
+
+  Ensure you have overridden routes for generated controllers in your routes.rb.
+  For example:
+
+    Rails.application.routes.draw do
+      devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
+    end
+
