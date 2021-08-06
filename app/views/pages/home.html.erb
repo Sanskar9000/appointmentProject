@@ -1,0 +1,27 @@
+<center>
+<% if doctor_signed_in? %>
+
+	<h2>Doctor signed in</h2>
+	<hr>
+	<h1>Hello Dr.<%=current_doctor.firstname %> </h1>
+	<h1>Check Appointments of the paitents or Log out</h1>
+	<button class="btn btn-success">Check</button>
+	<%= link_to "Log out", destroy_doctor_session_path, method: :delete, class:"btn btn-success" %>
+
+<% else %>
+	<h2 class="mt-3">Patients section</h2>
+	<hr>
+
+	<% if patient_signed_in? %>
+	<h1>Welcome <%=current_patient.firstname %> </h1>
+	<h1>Make new Appointment</h1>
+	<button class="btn btn-primary">Make</button>
+	<%= link_to "Log out", destroy_patient_session_path, method: :delete, class:'btn btn-primary'%>
+	<% else %>
+	<h1>Sign up or Log in to make new appointment</h1>
+	<%= link_to "Sign up", new_patient_registration_path, class:"btn btn-success"%>
+	<%= link_to "Log in", new_patient_session_path, class:"btn btn-success" %>
+	<% end %>
+	<hr>
+<% end %>
+</center>
