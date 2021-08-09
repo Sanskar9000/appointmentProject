@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello Dr.<%= @doctor.firstname %></h1>
+    <p>
+      I am <%= @patient.firstname%> <%= @patient.lastname%> and i have requested an appointment with you for <%= @appointment.appointment_date%><br>
+      PLease inform me if my appointment is confirmed or canceled.
+      <br>
+    </p>
+    <p>Thanks for reading this mail, have a nice day!</p>
+  </body>
+</html>

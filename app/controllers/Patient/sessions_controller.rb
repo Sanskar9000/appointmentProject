@@ -4,10 +4,9 @@ class Patient::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  def new
-    super
-    @patient = Patient.find(1)
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource/sign_in
   # def create

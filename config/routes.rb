@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   root "pages#home"
   # get 'patient/:pid/:did/new', to: 'appointments#appointment_new', as: 'appointment_new'
   get '/doctors_list', to: 'appointments#doctors_list', as: 'doctors_list'
+  get '/appointment/remove/:id', to: 'appointments#remove_status', as: 'remove_status'
 end

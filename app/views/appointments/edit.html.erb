@@ -1,6 +1,8 @@
-<h1>Editing Appointment</h1>
-
+<h1 class="mt-2" style="font-family: Ubuntu;">Confirm Appointment</h1>
+<hr>
+<% @appointment.confirmation_status = true %>
+<% @appointment.hold_status = false %>
 <%= render 'form', appointment: @appointment %>
+<hr>
 
-<%= link_to 'Show', @appointment %> |
-<%= link_to 'Back', appointments_path %>
+<%= link_to 'Back', appointments_path, class:"btn btn-primary" %>

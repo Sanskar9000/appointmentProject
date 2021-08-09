@@ -1,3 +1,5 @@
+<h1 class="mt-2" style="font-family: Ubuntu;">confirmed</h1>
+
 <%= form_with(model: appointment) do |form| %>
   <% if appointment.errors.any? %>
     <div id="error_explanation">
@@ -12,23 +14,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :appointment_date %>
-    <%= form.datetime_select :appointment_date%>
+    <%= form.label :Change appointment date %>
+    <%= form.datetime_select :appointment_date %>
   </div>  
   <div class="field">
-    <%= form.text_field :doctor_id , value:@did, type:"hidden"%>
+    <%= form.label :doctor_id %>
+    <%= form.text_field :doctor_id , value:@did%>
   </div>  
   <div class="field">
-    <%= form.text_field :patient_id , value:@pid, type:"hidden"%>
+    <%= form.label :patient_id %>
+    <%= form.text_field :patient_id , value:@pid%>
   </div>
   <div class="field">
-    <%= form.text_field :hold_status , value:true, type:"hidden"%>
-  </div>  
-  <div class="field">
-    <%= form.text_field :confirmation_status, type:"hidden"%>
+    <%= form.label :hold_status %>
+    <%= form.text_field :hold_status , value:true%>
   </div>
-  <br>
+
   <div class="actions">
-    <%= form.submit class:"btn btn-success"%>
+    <%= form.submit value:"confirm and send mail" %>
   </div>
 <% end %>

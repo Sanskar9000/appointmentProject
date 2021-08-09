@@ -1,21 +1,34 @@
-<h1>Doctors list</h1>
+<h1 class="mt-2" style="font-family: Ubuntu;">Doctors list</h1>
 <hr>
 
 <% if !@doctors.blank? %>
 	  <% for item in @doctors %>
-	    	<h3>Dr.<%= item.firstname %> <%=item.lastname %></h3>
-	    	<h3>Email: <%= item.email %></h3>
-	    	<%= form_with scope: @appointment,url: new_appointment_path, method: :get,local: true do |form| %>
+<div class="card mb-3 shadow mb-5 bg-white rounded" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <%= image_tag item.img_path,class:"img-fluid rounded-start", style:"width:200px;" %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h3 class="card-title" style="font-family: Ubuntu;">Dr.<%= item.firstname %> <%=item.lastname %></h3>
+        <p class="card-text">Email: <%= item.email %></p>
+        <p class="card-text"><small class="text-muted">Available 24x7</small></p>
+        <hr>
+        <%= form_with scope: @appointment,url: new_appointment_path, method: :get,local: true do |form| %>
 		  <div class="field">
 		    <%= form.text_field :id ,value:item.id, type:"hidden"%>
 		  </div>
 		  <div class="actions">
-		    <%= form.submit value:"make",class:"btn btn-info" %>
+		    <%= form.submit value:"make",class:"btn btn-primary" %>
 		  	<%= link_to 'Back', root_path ,class:"btn btn-info"  %>
-		  </div>
+		  </div> 
+      </div>
+    </div>
+  </div>
+</div>
 	<% end %>
-    <hr>
   <% end %>
 <% else %>
   
 <% end %>
+

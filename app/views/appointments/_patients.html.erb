@@ -1,0 +1,37 @@
+<% if !@appointments.blank? %>    
+<% @appointments.each do |appointment| %>
+<% @doctor = Doctor.find(appointment.doctor_id)%>
+      <div class="card mt-3 shadow mb-5 bg-white rounded">
+          <% if appointment.confirmation_status == nil and appointment.hold_status == true %>
+          <div class="card-header">
+            On Hold : <%= appointment.id %>
+          </div>
+        <% elsif appointment.confirmation_status == false %>
+          <div class="card-header bg-danger text-white">
+            Rejected : <%= appointment.id %>
+          </div>
+        <% elsif appointment.confirmation_status == true %>
+          <div class="card-header bg-success text-white">
+            Confirmed: <%= appointment.id %>
+          </div>
+          <% end %>
+        <div class="card-body">
+          <h5 class="card-title">Doctor name: <%= @doctor.firstname %> <%= @doctor.lastname %></h5>
+          <p class="card-text">Doctor ID: <%= appointment.doctor_id %></p>
+          <p class="card-text">Requested Date: <%= appointment.appointment_date %></p>
+          <%= link_to 'Delete', appointment_path(appointment), method: :delete ,class:"btn btn-danger"%>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+        <div class="card mt-3">
+        <div class="card-header">
+          Appointments
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">No Appointments yet!</h5>
+          <p class="card-text">Well isn't it good to have no appointments!</p>
+          <a href="/" class="btn btn-primary">Go back</a>
+        </div>
+      </div>
+ <% end %>

@@ -1,0 +1,38 @@
+<% if !@appointments.blank? %>    
+<% @appointments.each do |appointment| %>
+<% @patient = Patient.find(appointment.patient_id) %>
+      <div class="card mt-3 shadow mb-5 bg-white rounded">
+        <% if appointment.confirmation_status == nil and appointment.hold_status == true%>
+          <div class="card-header">
+            Appointment : <%= appointment.id %>
+          </div>
+        <% elsif appointment.confirmation_status == false %>
+          <div class="card-header bg-danger text-white">
+            Removed Appointment : <%= appointment.id %>
+          </div>
+        <% elsif appointment.confirmation_status == true %>
+          <div class="card-header bg-success text-white">
+            Confirmed Appointment : <%= appointment.id %>
+          </div>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title">Patient name: <%= @patient.firstname %> <%= @patient.lastname %></h5>
+          <p class="card-text">Patient ID: <%= appointment.patient_id %></p>
+          <p class="card-text">Requested Date: <%= appointment.appointment_date %></p>
+          <%= link_to 'confirm', edit_appointment_path(appointment), class:"btn btn-success" %>
+          <%= link_to 'Remove', remove_status_path(appointment.id), class:"btn btn-danger" %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+        <div class="card mt-3">
+        <div class="card-header">
+          Appointments
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">No Appointments yet!</h5>
+          <p class="card-text">Dont worry, you will get the chance to treat people as well</p>
+          <a href="/" class="btn btn-primary">Go back</a>
+        </div>
+      </div>
+ <% end %>
