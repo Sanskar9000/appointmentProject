@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello <%= @patient.firstname %></h1>
+    <p>
+      We would like to apologize but your appointment is cancelled<br>
+      Doctor you requested the appointment with:  Dr.<%= @doctor.firstname%>
+      <br>
+    </p>
+    <p>
+      To Make another appointment with any other doctor, click the following link: <a href="<%= @url %>">Make new Appointment</a> 
+    </p>
+    <p>Thanks for using our serivce, have a great day!</p>
+  </body>
+</html>

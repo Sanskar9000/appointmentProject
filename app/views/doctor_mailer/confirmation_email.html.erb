@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello <%= @patient.firstname %></h1>
+    <p>
+      your appointment is confirmed for <%= @appointment.appointment_date%><br>
+      Doctor you requested with an appointment with : Dr.<%= @doctor.firstname%> <%= @doctor.lastname%>
+      <br>
+    </p>
+    <p>
+      To cancel the appointment click the following link: <a href="<%= @url %>">Cancel</a> 
+    </p>
+    <p>Thanks for using our serivce, have a great day!</p>
+  </body>
+</html>

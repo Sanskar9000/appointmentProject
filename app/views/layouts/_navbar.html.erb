@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">APPOINTMENTS</a>
+    <a class="navbar-brand" href="#">MY HOSPITAL</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,39 +9,48 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
-        <% if  doctor_signed_in?%>
+        <% if doctor_signed_in?%>
         <li class="nav-item">
-          <a class="nav-link" href="#">Check Appointments</a>
+          <a class="nav-link" href="/appointments">Appointments</a>
         </li>
-        <% else %>
-          <% if  patient_signed_in?%>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Make Appointments</a>
-            </li>
-          <% end %>
+        <% elsif patient_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="/appointments">Check Appointments</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/doctors_list">Make Appointment</a>
+        </li>
         <% end %>
-        <li class="nav-item dropdown">
+         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Doctors Section
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
             <% if doctor_signed_in? %>
             <li><%= link_to "Log out", destroy_doctor_session_path, method: :delete, class:"dropdown-item" %></li>
-
             <% else %>
-            <li><%= link_to "Sign in", new_doctor_session_path, class:"dropdown-item"%></li>
-            <!-- <li><hr class="dropdown-divider"></li> -->
+            <li><%= link_to "Log in", new_doctor_session_path, class:"dropdown-item" %></li>
             <% end %>
           </ul>
         </li>
-<!--         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li> -->
       </ul>
-     <!--  <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
+      <form class="d-flex text-white">
+        <% if doctor_signed_in? %>
+          <div class="mt-2">
+            Dr.<%= current_doctor.firstname %>
+            <%= current_doctor.lastname %>
+          </div>
+            <%= link_to "Log out", destroy_patient_session_path, method: :delete, class:"btn text-white" %>
+        <% elsif patient_signed_in? %>
+            <div class="mt-2">
+              <%= current_patient.firstname %>
+              <%= current_patient.lastname %>
+            </div>
+
+            <%= link_to "Log out", destroy_patient_session_path, method: :delete, class:"btn text-white" %>
+        <% end %>
+      </form>
     </div>
   </div>
 </nav>

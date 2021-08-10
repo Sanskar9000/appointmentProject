@@ -1,0 +1,9 @@
+<h1 class="mt-2" style="font-family: Ubuntu;">Appointments</h1>
+<hr>
+  <% if doctor_signed_in? %>
+    <%=render('appointments/doctors')%>
+  <% elsif patient_signed_in? %>
+    <%=render('appointments/patients')%>
+  <% end %>
+<br>
+
